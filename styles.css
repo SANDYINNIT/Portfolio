@@ -1,4 +1,3 @@
-/* all the colors and fonts live here. if you want a new vibe, start with --accent */
 :root {
   --font-display: "Space Grotesk", "Inter", system-ui, sans-serif;
   --font-body: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -43,7 +42,6 @@
   --shadow: 0 18px 44px rgba(30, 32, 50, 0.12);
 }
 
-/* boring but important base stuff */
 *, *::before, *::after { box-sizing: border-box; }
 * { margin: 0; }
 html { scroll-behavior: smooth; scroll-padding-top: 84px; }
@@ -58,7 +56,6 @@ body {
   overflow-x: hidden;
 }
 body::before {
-  /* faint grid backdrop. the mask fades it out toward the bottom so it stays subtle */
   content: "";
   position: fixed;
   inset: 0;
@@ -81,10 +78,8 @@ p { text-wrap: pretty; }
 
 .wrap { width: min(var(--wrap), 100% - 40px); margin-inline: auto; }
 
-/* keyboard focus ring. keep this visible, some people navigate without a mouse */
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
 
-/* skip link, only pops up when tabbing. leave it alone */
 .skip-link {
   position: absolute; left: 16px; top: -60px; z-index: 100;
   background: var(--accent); color: var(--accent-ink);
@@ -93,10 +88,10 @@ p { text-wrap: pretty; }
 }
 .skip-link:focus { top: 12px; }
 
-/* sticky top bar. the blur needs that -webkit line for safari */
 .site-header {
   position: sticky; top: 0; z-index: 50;
   backdrop-filter: blur(14px);
+  /* safari needs the prefix */
   -webkit-backdrop-filter: blur(14px);
   background: rgba(10, 12, 17, 0.84);
   background: color-mix(in srgb, var(--bg) 82%, transparent);
@@ -133,7 +128,6 @@ p { text-wrap: pretty; }
 [data-theme="light"] .icon-moon { display: block; }
 [data-theme="light"] .icon-sun { display: none; }
 
-/* Language switcher */
 .lang-switcher { position: relative; }
 .lang-btn {
   display: flex; align-items: center; gap: 8px;
@@ -147,7 +141,6 @@ p { text-wrap: pretty; }
 .flag { width: 20px; height: 14px; border-radius: 3px; overflow: hidden; display: inline-flex; flex-shrink: 0; box-shadow: 0 0 0 1px var(--border); }
 .flag svg { width: 100%; height: 100%; display: block; }
 .lang-menu {
-  /* hidden until JS toggles .open on the wrapper. sits right under the button */
   position: absolute; right: 0; top: calc(100% + 8px); z-index: 70;
   min-width: 100%;
   background: var(--surface); border: 1px solid var(--border); border-radius: 12px;
@@ -164,7 +157,6 @@ p { text-wrap: pretty; }
 .lang-menu button[aria-checked="true"] { color: var(--accent); }
 .nav-toggle { display: none; }
 
-/* buttons. .btn-primary is the filled one, .btn-ghost is the outline */
 .btn {
   display: inline-flex; align-items: center; gap: 8px;
   font-family: var(--font-body); font-weight: 600; font-size: 15px;
@@ -180,7 +172,6 @@ p { text-wrap: pretty; }
 .btn-small { padding: 9px 16px; font-size: 14px; border-radius: 9px; }
 .btn-large { padding: 15px 30px; font-size: 16px; }
 
-/* hero, the big first screen */
 .hero { padding: 72px 0 0; overflow: clip; }
 .hero-grid { display: grid; grid-template-columns: 1.12fr 0.88fr; gap: 56px; align-items: start; }
 .hero-copy, .hero-panel { min-width: 0; }
@@ -204,7 +195,6 @@ p { text-wrap: pretty; }
 .hero-proof dt { font-family: var(--font-mono); font-size: 11px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--faint); margin-bottom: 2px; }
 .hero-proof dd { font-family: var(--font-display); font-weight: 700; font-size: 21px; }
 
-/* the little profile.md card on the right. looks nice, just keep the rows updated */
 .hero-panel { padding-top: 8px; }
 .panel-card {
   background: var(--surface); border: 1px solid var(--border);
@@ -237,7 +227,7 @@ p { text-wrap: pretty; }
 .copy-btn:hover { border-color: var(--accent); color: var(--accent); }
 .panel-note { margin-top: 14px; font-size: 13.5px; color: var(--faint); font-family: var(--font-mono); }
 
-/* scrolling tech strip. if you add items, add them to BOTH halves or the loop jumps */
+/* ticker needs two identical halves or the loop jumps */
 .ticker { margin-top: 56px; border-top: 1px solid var(--border-soft); overflow: hidden; padding: 16px 0 20px; }
 .ticker-track { display: flex; width: max-content; animation: tick 30s linear infinite; }
 .ticker-half { display: flex; gap: 14px; padding-right: 14px; white-space: nowrap; }
@@ -245,7 +235,6 @@ p { text-wrap: pretty; }
 .ticker-track i { color: var(--border); font-style: normal; }
 @keyframes tick { to { transform: translateX(-50%); } }
 
-/* section scaffolding. spacing + those 01/02/03 labels */
 .section { padding: 96px 0; }
 .section-alt { background: var(--bg-2); border-top: 1px solid var(--border-soft); border-bottom: 1px solid var(--border-soft); }
 .section-label {
@@ -261,7 +250,6 @@ p { text-wrap: pretty; }
 .section-head h2, .about-grid h2, .exp-grid h2 { font-size: clamp(30px, 4vw, 44px); margin-bottom: 14px; }
 .section-head p { color: var(--muted); font-size: 17px; }
 
-/* about: text left, fact box right */
 .about-grid { display: grid; grid-template-columns: 1.25fr 0.75fr; gap: 56px; align-items: start; }
 .about-grid p { color: var(--muted); margin-bottom: 18px; font-size: 17px; }
 .about-grid p em { color: var(--text); font-style: normal; font-weight: 600; }
@@ -273,7 +261,6 @@ p { text-wrap: pretty; }
 .facts li span { display: block; font-family: var(--font-mono); font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--faint); margin-bottom: 3px; }
 .facts a { color: var(--accent); }
 
-/* project cards. featured ones are the big rows with the colored panel */
 .featured-list { display: grid; gap: 28px; margin-bottom: 56px; }
 .project {
   display: grid; grid-template-columns: 1.1fr 0.9fr;
@@ -294,7 +281,6 @@ p { text-wrap: pretty; }
 }
 .project-links { display: flex; flex-wrap: wrap; gap: 10px; }
 .project-visual {
-  /* pure CSS visuals on purpose, no images to load or optimize. swap the gradients whenever */
   position: relative; display: flex; flex-direction: column; justify-content: flex-end;
   padding: 28px; min-height: 300px; overflow: hidden;
   background: linear-gradient(135deg, #0f2b21, #123527 55%, #0d1a24);
@@ -328,7 +314,6 @@ p { text-wrap: pretty; }
 .more-note { margin-top: 26px; color: var(--muted); font-size: 15px; }
 .more-note a { color: var(--accent); font-weight: 600; }
 
-/* skills grid. 4 columns on desktop, stacks on phones. add groups freely */
 .skills-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px; }
 .skill-group { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 26px 24px; }
 .skill-group h3 { font-size: 16px; margin-bottom: 18px; padding-bottom: 14px; border-bottom: 1px solid var(--border-soft); }
@@ -336,7 +321,6 @@ p { text-wrap: pretty; }
 .skill-group li strong { display: block; font-size: 15px; }
 .skill-group li span { font-size: 13px; color: var(--faint); }
 
-/* timeline on the left, education stacked on the right */
 .exp-grid { display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 64px; align-items: start; }
 .timeline { list-style: none; padding: 0; margin-top: 32px; display: grid; gap: 20px; position: relative; }
 .timeline::before { content: ""; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 2px; background: var(--border); }
@@ -361,29 +345,25 @@ p { text-wrap: pretty; }
 .now-card li strong { display: block; font-size: 14.5px; }
 .now-card li span { font-size: 13px; color: var(--muted); }
 
-/* contact. centered and narrow on purpose */
 .contact-wrap { max-width: 720px; }
 .contact-wrap h2 { font-size: clamp(34px, 5vw, 56px); margin-bottom: 16px; }
 .contact-sub { color: var(--muted); font-size: 18px; margin-bottom: 30px; }
-/* space between the help grid and the email button. remove if the grid ever goes */
 .help-grid { margin-bottom: 34px; }
 .contact-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 34px; }
 .social-row { list-style: none; padding: 26px 0 0; display: flex; flex-wrap: wrap; gap: 8px 26px; border-top: 1px solid var(--border-soft); }
 .social-row a { font-family: var(--font-mono); font-size: 14px; color: var(--muted); text-decoration: none; }
 .social-row a:hover { color: var(--accent); }
 
-/* footer, nothing fancy down here */
 .site-footer { border-top: 1px solid var(--border-soft); padding: 28px 0 36px; }
 .footer-inner { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; font-size: 13.5px; color: var(--faint); }
 .footer-links { display: flex; gap: 20px; }
 .footer-links a { color: var(--faint); text-decoration: none; }
 .footer-links a:hover { color: var(--text); }
 
-/* scroll-in animation. JS adds .visible when a section enters view */
+/* JS adds .visible on scroll */
 .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s ease, transform 0.7s ease; }
 .reveal.visible { opacity: 1; transform: none; }
 
-/* smaller screens. 960 = tablet, 720 = phone nav kicks in, 520 = small phones */
 @media (max-width: 960px) {
   .hero-grid { grid-template-columns: 1fr; gap: 40px; }
   .hero-panel { max-width: 560px; }
@@ -422,7 +402,7 @@ p { text-wrap: pretty; }
   .contact-cta .btn { width: 100%; justify-content: center; }
 }
 
-/* kills animation for people who prefer reduced motion. don't remove this one */
+/* keep this: turns animation off when the OS asks for it */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.001s !important; transition-duration: 0.001s !important; }
@@ -430,7 +410,7 @@ p { text-wrap: pretty; }
   .reveal { opacity: 1; transform: none; }
 }
 
-/* print: recruiters do print pages sometimes. light ink-friendly version, no interactive chrome */
+/* print version: light colors, no interactive bits */
 @media print {
   :root {
     --bg: #fff; --bg-2: #fff; --surface: #fff; --surface-2: #f4f4f4;
